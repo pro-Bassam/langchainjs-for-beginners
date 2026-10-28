@@ -7,17 +7,17 @@
  * - "How would I add an AIMessage to continue this conversation?"
  */
 
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { HumanMessage, SystemMessage } from "langchain";
 import "dotenv/config";
 
 async function main() {
   console.log("🎭 Understanding Message Types\n");
 
-  const model = new ChatOpenAI({
-    model: process.env.AI_MODEL,
-    configuration: { baseURL: process.env.AI_ENDPOINT },
+  const model = new ChatGoogleGenerativeAI({
+    model: process.env.AI_MODEL || "gemini-3.8-flash",
     apiKey: process.env.AI_API_KEY,
+    temperature: 0.7,
   });
 
   // Using structured messages for better control

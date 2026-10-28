@@ -6,15 +6,16 @@
  * - "How does the configuration baseURL work with different AI providers?"
  */
 
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import "dotenv/config";
 
 async function main() {
   console.log("🚀 Hello LangChain.js!\n");
-  const model = new ChatOpenAI({
-    model: process.env.AI_MODEL,
-    configuration: { baseURL: process.env.AI_ENDPOINT },
+  
+  const model = new ChatGoogleGenerativeAI({
+    model: process.env.AI_MODEL || "gemini-3.8-flash", 
     apiKey: process.env.AI_API_KEY,
+    temperature: 0.7,
   });
 
   const response = await model.invoke("What is LangChain in one sentence?");
