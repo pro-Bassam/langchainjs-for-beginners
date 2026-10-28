@@ -11,9 +11,9 @@ import "dotenv/config";
 
 async function main() {
   console.log("🚀 Hello LangChain.js!\n");
-  
+
   const model = new ChatGoogleGenerativeAI({
-    model: process.env.AI_MODEL || "gemini-3.8-flash", 
+    model: process.env.AI_MODEL || "gemini-3.8-flash",
     apiKey: process.env.AI_API_KEY,
     temperature: 0.7,
   });
